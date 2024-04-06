@@ -4,3 +4,9 @@ wikipedia
 pywhatkit
 pyaudio
 SpeechRecognition
+streamlit
+PIL
+google
+google-generativeai
+torch
+transformers
