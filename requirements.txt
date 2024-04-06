@@ -5,7 +5,7 @@ pywhatkit
 pyaudio
 SpeechRecognition
 streamlit
-PIL
+Pillow
 google
 google-generativeai
 torch

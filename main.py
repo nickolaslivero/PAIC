@@ -4,10 +4,11 @@ import datetime
 import wikipedia
 import pywhatkit
 
+from gemini import generate_description_from_text, MODEL_TEXT
+
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
 
-# Define a voz em português
 voice_id = r"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_PT-BR_MARIA_11.0"
 engine.setProperty('voice', voice_id)
 
@@ -55,6 +56,11 @@ def user_voice_command():
                 engine.say("Até logo!")
                 engine.runAndWait()
                 break
+            elif "curiosidade" in command:
+                result = generate_description_from_text("Me retorne uma curiosidade", MODEL_TEXT)
+                print(result)
+                engine.say(result)
+                engine.runAndWait()
 
 
 user_voice_command()

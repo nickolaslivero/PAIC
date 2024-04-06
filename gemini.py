@@ -9,10 +9,17 @@ INPUT = \
     Retorne um audio com a musica dessa partitura.
     """
 
+MODEL_VISION = genai.GenerativeModel('gemini-pro-vision')
+MODEL_TEXT = genai.GenerativeModel('gemini-pro')
 
-def generate_description(image):
-    model_vision = genai.GenerativeModel('gemini-pro-vision')
-    description = model_vision.generate_content([INPUT, image])
+
+def generate_description_from_image(image, model):
+    description = model.generate_content([INPUT, image])
+    return description.text
+
+
+def generate_description_from_text(prompt, model):
+    description = model.generate_content(prompt)
     return description.text
 
 
@@ -26,7 +33,7 @@ def main():
         st.image(image, caption="Imagem Carregada", use_column_width=True)
 
         with st.spinner("Processando imagem..."):
-            description = generate_description(image)
+            description = generate_description_from_image(image, MODEL_VISION)
             st.subheader("Resultado:")
             st.write(description)
 
