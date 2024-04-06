@@ -33,10 +33,12 @@ def user_voice_command():
         command = execute_command()
         if command:
             if "horas" in command:
+                print("buscando horas...")
                 current_time = datetime.datetime.now().strftime("%H:%M")
                 engine.say("Agora são " + current_time)
                 engine.runAndWait()
             elif "procure por" in command:
+                print("procurando informação...")
                 search_query = command.replace("procure por", "")
                 wikipedia.set_lang("pt")
                 result = wikipedia.summary(search_query, 2)
@@ -44,19 +46,23 @@ def user_voice_command():
                 engine.say(result)
                 engine.runAndWait()
             elif "toque" in command:
+                print("tocando...")
                 song = command.replace("toque", "")
                 result = pywhatkit.playonyt(song)
                 print(result)
                 engine.say("Tocando música")
                 engine.runAndWait()
             elif "olá" in command:
+                print("Olá")
                 engine.say("Olá, tudo bem?")
                 engine.runAndWait()
             elif "parar" in command:
+                print("Até logo!")
                 engine.say("Até logo!")
                 engine.runAndWait()
                 break
             elif "curiosidade" in command:
+                print("buscando uma curiosidade...")
                 result = generate_description_from_text("Me retorne uma curiosidade", MODEL_TEXT)
                 print(result)
                 engine.say(result)
