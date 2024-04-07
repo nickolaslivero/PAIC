@@ -3,6 +3,7 @@ import pyttsx3
 import datetime
 import wikipedia
 import pywhatkit
+import pyautogui
 
 from gemini import generate_description_from_text, MODEL_TEXT
 
@@ -45,18 +46,21 @@ def user_voice_command():
                 print(result)
                 engine.say(result)
                 engine.runAndWait()
-            elif "toque" in command:
+            elif "toque" or "tocar" in command:
                 print("tocando...")
                 song = command.replace("toque", "")
                 result = pywhatkit.playonyt(song)
                 print(result)
                 engine.say("Tocando música")
                 engine.runAndWait()
+            elif "fechar guia" in command:
+                print("fechando...")
+                pyautogui.hotkey('ctrl', 'w')
             elif "olá" in command:
                 print("Olá")
                 engine.say("Olá, tudo bem?")
                 engine.runAndWait()
-            elif "parar" in command:
+            elif "parar" or "fechar" in command:
                 print("Até logo!")
                 engine.say("Até logo!")
                 engine.runAndWait()

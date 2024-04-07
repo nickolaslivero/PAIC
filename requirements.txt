@@ -10,3 +10,5 @@ google
 google-generativeai
 torch
 transformers
+pyautogui
+selenium
