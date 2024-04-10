@@ -32,6 +32,7 @@ def execute_command():
 def user_voice_command():
     while True:
         command = execute_command()
+        print(command)
         if command:
             if "horas" in command:
                 print("buscando horas...")
@@ -46,7 +47,7 @@ def user_voice_command():
                 print(result)
                 engine.say(result)
                 engine.runAndWait()
-            elif "toque" or "tocar" in command:
+            elif "tocar" in command:
                 print("tocando...")
                 song = command.replace("toque", "")
                 result = pywhatkit.playonyt(song)
@@ -60,17 +61,17 @@ def user_voice_command():
                 print("Olá")
                 engine.say("Olá, tudo bem?")
                 engine.runAndWait()
-            elif "parar" or "fechar" in command:
-                print("Até logo!")
-                engine.say("Até logo!")
-                engine.runAndWait()
-                break
             elif "curiosidade" in command:
                 print("buscando uma curiosidade...")
                 result = generate_description_from_text("Me retorne uma curiosidade", MODEL_TEXT)
                 print(result)
                 engine.say(result)
                 engine.runAndWait()
+            elif "desligar" in command:
+                print("Até logo!")
+                engine.say("Até logo!")
+                engine.runAndWait()
+                break
 
 
 user_voice_command()
